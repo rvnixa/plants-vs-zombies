@@ -1,0 +1,36 @@
+import type { ZombieDrawOptions, ZombieUpdateOptions } from "./types";
+
+export function drawZombieRect({ board, state }: ZombieDrawOptions) {
+  const { ctx } = board;
+
+  if (ctx === null) {
+    return;
+  }
+
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(state.x, state.y, state.width, state.height);
+  ctx.fill();
+}
+
+export function drawZombieId({ board, state }: ZombieDrawOptions) {
+  const { ctx } = board;
+
+  if (ctx === null) {
+    return;
+  }
+
+  ctx.fillStyle = "#000000";
+  ctx.fillText(state.id, state.x, state.y + state.height / 2);
+}
+
+export function handleZombieDefaultMovement({
+  deltaTime,
+  state,
+}: ZombieUpdateOptions) {
+  state.x -= state.speed * (deltaTime / 1000);
+}
+
+export function syncZombieHitbox({ state }: ZombieUpdateOptions) {
+  state.hitbox.x = state.x;
+  state.hitbox.y = state.y;
+}
