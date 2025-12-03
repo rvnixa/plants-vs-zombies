@@ -12,7 +12,6 @@ import {
   createFlagZombie,
   createNormalZombie,
   createZombieManager,
-  type Zombie,
   type ZombieManager,
 } from "./entities/zombies";
 import {
