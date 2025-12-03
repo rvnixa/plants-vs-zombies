@@ -1,4 +1,4 @@
-import { createHitbox, drawHitbox } from "@/game/helpers/hitbox";
+import { createHitbox } from "@/game/helpers/hitbox";
 import { drawShotId, drawShotRect, syncShotHitbox } from "./helpers";
 
 import { SHOT_HEIGHT, SHOT_WIDTH, ShotId } from "./constants";
@@ -55,7 +55,8 @@ function draw(options: ShotDrawOptions<PeashotState>) {
 
   drawShotRect(options);
   drawShotId(options);
-  drawHitbox(state.hitbox, board);
+
+  state.hitbox.draw(state.hitbox, board);
 }
 
 function update(options: ShotUpdateOptions<PeashotState>) {

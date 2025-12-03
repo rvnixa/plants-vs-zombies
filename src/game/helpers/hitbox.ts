@@ -2,15 +2,21 @@ import type { Board } from "../board";
 import type { Size } from "../utils/size";
 import type { Vector2 } from "../utils/vector";
 
-type Hitbox = Vector2 & Size;
+type Hitbox = {
+  draw(hitbox: Hitbox, board: Board): void;
+} & Vector2 &
+  Size;
 
-type CreateHitboxOptions = Hitbox;
+type CreateHitboxOptions = Vector2 & Size;
 
 function createHitbox(options: CreateHitboxOptions): Hitbox {
-  return options;
+  return {
+    ...options,
+    draw,
+  };
 }
 
-function drawHitbox(hitbox: Hitbox, board: Board) {
+function draw(hitbox: Hitbox, board: Board) {
   const { ctx } = board;
 
   if (ctx === null) {
@@ -22,5 +28,5 @@ function drawHitbox(hitbox: Hitbox, board: Board) {
   ctx.stroke();
 }
 
-export { createHitbox, drawHitbox };
+export { createHitbox };
 export type { Hitbox };
