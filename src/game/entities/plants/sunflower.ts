@@ -1,4 +1,4 @@
-import { createHitbox, drawHitbox } from "@/game/helpers/hitbox";
+import { createHitbox } from "@/game/helpers/hitbox";
 import { drawPlantId, drawPlantRect, syncPlantHitbox } from "./helpers";
 
 import { PLANT_HEIGHT, PLANT_WIDTH, PlantId } from "./constants";
@@ -55,7 +55,8 @@ function draw(options: PlantDrawOptions<SunflowerState>) {
 
   drawPlantRect(options);
   drawPlantId(options);
-  drawHitbox(state.hitbox, board);
+
+  state.hitbox.draw(state.hitbox, board);
 }
 
 function update(options: PlantUpdateOptions<SunflowerState>) {

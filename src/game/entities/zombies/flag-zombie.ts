@@ -4,7 +4,7 @@ import {
   handleZombieDefaultMovement,
   syncZombieHitbox,
 } from "./helpers";
-import { createHitbox, drawHitbox } from "@/game/helpers/hitbox";
+import { createHitbox } from "@/game/helpers/hitbox";
 
 import { ZOMBIE_HEIGHT, ZOMBIE_WIDTH, ZombieId } from "./constants";
 
@@ -62,7 +62,8 @@ function draw(options: ZombieDrawOptions<FlagZombieState>) {
 
   drawZombieRect(options);
   drawZombieId(options);
-  drawHitbox(state.hitbox, board);
+
+  state.hitbox.draw(state.hitbox, board);
 }
 
 function update(options: ZombieUpdateOptions<FlagZombieState>) {

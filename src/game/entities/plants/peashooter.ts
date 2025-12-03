@@ -1,4 +1,4 @@
-import { createHitbox, drawHitbox } from "@/game/helpers/hitbox";
+import { createHitbox } from "@/game/helpers/hitbox";
 import { drawPlantId, drawPlantRect, syncPlantHitbox } from "./helpers";
 import { createPeashot, SHOT_HEIGHT } from "../shots";
 
@@ -60,7 +60,8 @@ function draw(options: PlantDrawOptions<PeashooterState>) {
 
   drawPlantRect(options);
   drawPlantId(options);
-  drawHitbox(state.hitbox, board);
+
+  state.hitbox.draw(state.hitbox, board);
 }
 
 function update(options: PlantUpdateOptions<PeashooterState>) {
